@@ -1,13 +1,18 @@
 <template>
-$END$
+  <div>
+    <h1>Accueil</h1>
+  </div>
 </template>
 
 <script>
 export default {
-name: "Accueil"
+  name: 'Accueil',
+  props: {
+    msg: String
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
