@@ -2,11 +2,12 @@
   <div class="general-accueil">
     <div id="map" ref="map">
       <div v-for="dechet in allDechets" :key="dechet.id">
-        <MapMarker :lat=parseFloat(dechet.latitude) :lng=parseFloat(dechet.longitude)></MapMarker>
-        <popupInfoProduit
-            :open="true"
+        <MapMarker
+            :lat=parseFloat(dechet.latitude)
+            :lng=parseFloat(dechet.longitude)
             :infoDechet="dechet"
-          />
+            @open-info="openInfo"
+        />
       </div>
 
       <!--
@@ -15,7 +16,11 @@
      -->
 
     </div>
-
+    <popupInfoProduit
+        :open="open"
+        :infoDechet="uniqueDechet"
+        @close="close"
+    />
   </div>
 </template>
 
@@ -29,7 +34,9 @@ export default {
   name: "Accueil",
   data(){
     return {
-      allDechets: []
+      allDechets: [],
+      uniqueDechet: {},
+      open: false
     }
   },
   components:{
@@ -44,6 +51,14 @@ export default {
         else setTimeout(checkForMap, 200)
       }
       checkForMap()
+    },
+    openInfo(dechet){
+      console.log("ok")
+      this.uniqueDechet = dechet
+      this.open = true
+    },
+    close(){
+      this.open = false
     }
   },
   mounted() {
