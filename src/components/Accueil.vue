@@ -1,9 +1,13 @@
 <template>
   <div class="general-accueil">
     <div id="map" ref="map">
-      <li v-for="dechet in allDechets" :key="dechet.id">
+      <div v-for="dechet in allDechets" :key="dechet.id">
         <MapMarker :lat=parseFloat(dechet.latitude) :lng=parseFloat(dechet.longitude)></MapMarker>
-      </li>
+        <popupInfoProduit
+            :open="true"
+            :infoDechet="dechet"
+          />
+      </div>
 
       <!--
      remplacer les MapMarker par ceux de Hugo
@@ -18,6 +22,7 @@
 <script>
 
 import MapMarker from "./MapMarker"
+import popupInfoProduit from "./popupInfoProduit"
 import axios from 'axios'
 
 export default {
@@ -28,7 +33,8 @@ export default {
     }
   },
   components:{
-    MapMarker
+    MapMarker,
+    popupInfoProduit
   },
   methods: {
     getMap(callback) {
@@ -58,4 +64,5 @@ export default {
   height: 600px;
   background: grey;
 }
+
 </style>
