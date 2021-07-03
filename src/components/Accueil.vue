@@ -21,6 +21,8 @@
       <MapMarker :lat="48.8583701" :lng="2.2922926"></MapMarker>
       <MapMarker :lat="48.8421379" :lng="2.3197627"></MapMarker>
       <MapMarker :lat="48.8039639" :lng="2.3632974"></MapMarker>
+
+      {{allDechets }}
     </div>
 
   </div>
@@ -52,7 +54,10 @@ export default {
     }
   },
   mounted() {
-    this.allDechets = axios.get('https://api-loubardise.com/api/dechets/getAllDechets')
+    axios.get('https://api-loubardise.kozyvisit.com/api/dechets/getAllDechets')
+    .then(res => {
+      this.allDechets = res.data
+    })
 
     this.map = new window.google.maps.Map(this.$refs["map"], {
       center: { lat: 48.7887337,lng: 2.361544 },
