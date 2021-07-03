@@ -1,28 +1,15 @@
 <template>
   <div class="general-accueil">
     <div id="map" ref="map">
-      <!-- faire un v-for dans la liste AllDechets
-     pour rappel All Dechets est un tableau de dictionnaire
-     le dictionnaire est composé de
-     id,
-     urlfile,
-     latitude,
-     longitude,typedechets
+      <li v-for="dechet in allDechets" :key="dechet.id">
+        <MapMarker :lat=parseFloat(dechet.latitude) :lng=parseFloat(dechet.longitude)></MapMarker>
+      </li>
 
-
-     A faire aussi:
+      <!--
      remplacer les MapMarker par ceux de Hugo
      quand tu cliques sur un point popup afficher les infos
-
      -->
 
-
-      <MapMarker :lat="48.8737917" :lng="2.2928388"></MapMarker>
-      <MapMarker :lat="48.8583701" :lng="2.2922926"></MapMarker>
-      <MapMarker :lat="48.8421379" :lng="2.3197627"></MapMarker>
-      <MapMarker :lat="48.8039639" :lng="2.3632974"></MapMarker>
-
-      {{allDechets }}
     </div>
 
   </div>
@@ -58,14 +45,9 @@ export default {
     .then(res => {
       this.allDechets = res.data
     })
-
     this.map = new window.google.maps.Map(this.$refs["map"], {
       center: { lat: 48.7887337,lng: 2.361544 },
       zoom: 10
-    })
-    new window.google.maps.Marker({
-      position: { lat: 48.7887337,lng: 2.361544 },
-      map: this.map
     })
   }
 }
@@ -76,5 +58,4 @@ export default {
   height: 600px;
   background: grey;
 }
-
 </style>
