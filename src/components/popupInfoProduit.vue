@@ -1,20 +1,23 @@
 <template>
-  <div class="general-popup" v-if="open">
-    <button id="close" class="close" v-on:click="close">X</button>
-    <div class="image" v-bind:style="'background-image:url(' + infoDechet.urlfile + ');'"></div>
+  <transition name="modal-fade">
+    <div class="general-popup" v-if="open" v-bind:style="'left:' + posx + 'px; top:' + posy + 'px;'">
+      <button id="close" class="close" v-on:click="close">X</button>
+      <div class="image" v-bind:style="'background-image:url(' + infoDechet.urlfile + ');'"></div>
 
-    <div class="sub-info">
-      <p class="pd-number">Produit {{ infoDechet.id }}</p>
-      <button class="button-pick" v-on:click="pickWaste">Nettoyé 🦋</button>
-      <p class="information">{{ infoDechet.typedechets }}</p>
-      <p class="description">Type</p>
-      <p class="information">{{ infoDechet.latitude }}</p>
-      <p class="description">Latitude</p>
-      <p class="information">{{ infoDechet.longitude }}</p>
-      <p class="description">Longitude </p>
+      <div class="sub-info">
+        <p class="pd-number">Produit {{ infoDechet.id }}</p>
+        <button class="button-pick" v-on:click="pickWaste">Nettoyé 🦋</button>
+        <p class="information">{{ infoDechet.typedechets }}</p>
+        <p class="description">Type</p>
+        <p class="information">{{ infoDechet.latitude }}</p>
+        <p class="description">Latitude</p>
+        <p class="information">{{ infoDechet.longitude }}</p>
+        <p class="description">Longitude </p>
+      </div>
+
     </div>
+  </transition>
 
-  </div>
 </template>
 
 <script>
@@ -24,7 +27,9 @@ export default {
   name: "popupInfoProduit",
   props: {
     open: Boolean,
-    infoDechet : Object
+    infoDechet : Object,
+    posx: Number,
+    posy: Number
   },
   methods: {
     close(){
@@ -33,6 +38,7 @@ export default {
     async pickWaste(){
       try {
         await axios.put('https://api-loubardise.kozyvisit.com/api/dechets/hideDechet/' + this.infoDechet.id)
+        this.$emit('pick-up-waste', this.infoDechet.id)
       } catch(e) {
         console.log(e)
       }
@@ -43,8 +49,18 @@ export default {
 
 <style scoped>
 
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+
 .general-popup{
-  position: relative;
+  position: absolute;
   z-index:100;
   border-radius: 5px;
   width: 20vw;

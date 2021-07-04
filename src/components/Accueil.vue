@@ -3,6 +3,7 @@
     <div id="map" ref="map">
       <div v-for="dechet in allDechets" :key="dechet.id">
         <MapMarker
+            v-if="allDechets.includes(dechet)"
             :lat=parseFloat(dechet.latitude)
             :lng=parseFloat(dechet.longitude)
             :infoDechet="dechet"
@@ -20,6 +21,9 @@
         :open="open"
         :infoDechet="uniqueDechet"
         @close="close"
+        @pick-up-waste="pickUpWaste"
+        :posx="posx"
+        :posy="posy"
     />
   </div>
 </template>
@@ -36,7 +40,9 @@ export default {
     return {
       allDechets: [],
       uniqueDechet: {},
-      open: false
+      open: false,
+      posx: 0,
+      posy: 0
     }
   },
   components:{
@@ -52,9 +58,12 @@ export default {
       }
       checkForMap()
     },
-    openInfo(dechet){
-      console.log("ok")
-      this.uniqueDechet = dechet
+    pickUpWaste(id){
+      this.close()
+      this.allDechets.splice(this.allDechets.findIndex(a => a.id === id), 1)
+    },
+    openInfo(args){
+      this.uniqueDechet = args.dechet
       this.open = true
     },
     close(){

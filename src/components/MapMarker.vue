@@ -21,7 +21,7 @@ export default {
         }
       })
       this.marker.addListener("click", () => {
-        this.$emit('open-info', this.infoDechet)
+        this.$emit('open-info', {dechet: this.infoDechet})
       });
     })
   },
