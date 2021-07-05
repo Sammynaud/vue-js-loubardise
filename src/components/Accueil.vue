@@ -77,7 +77,9 @@ export default {
     })
     this.map = new window.google.maps.Map(this.$refs["map"], {
       center: { lat: 48.7887337,lng: 2.361544 },
-      zoom: 10
+      zoom: 10,
+      mapId: '43e5010fc67fffb9',
+      streetViewControl: false
     })
   }
 }
@@ -85,8 +87,10 @@ export default {
 
 <style scoped>
 #map {
-  height: 600px;
-  background: grey;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 </style>

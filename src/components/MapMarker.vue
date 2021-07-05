@@ -16,7 +16,7 @@ export default {
         position: { lat: this.lat, lng: this.lng },
         map: map,
         icon: {
-          url: 'https://myloubardiseclient.s3.eu-west-3.amazonaws.com/marker-loubardise-google-font%402x.png',
+          url: 'https://myloubardiseclient.s3.eu-west-3.amazonaws.com/marker-green%402x.png',
           scaledSize: new window.google.maps.Size(34.5, 50)
         }
       })

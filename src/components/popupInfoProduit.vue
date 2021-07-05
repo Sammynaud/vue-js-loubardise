@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div class="general-popup" v-if="open" v-bind:style="'left:' + posx + 'px; top:' + posy + 'px;'">
+    <div class="general-popup" v-if="open" v-bind:style="'left: 1%; top: 10%;'">
       <button id="close" class="close" v-on:click="close">X</button>
       <div class="image" v-bind:style="'background-image:url(' + infoDechet.urlfile + ');'"></div>
 
@@ -49,13 +49,21 @@ export default {
 
 <style scoped>
 
-.modal-fade-enter,
-.modal-fade-leave-to {
-  opacity: 0;
+@keyframes left-to-right{
+  0% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.2s ease;
+
+.modal-fade-enter-active{
+  animation: left-to-right 0.5s ease-in;
+}
+
+.modal-fade-leave-active{
+  animation: left-to-right 0.5s ease-in reverse;
 }
 
 
