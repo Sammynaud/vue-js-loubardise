@@ -16,7 +16,7 @@
         <img class="img-map" src="~@/components/img/map-loubardise.png" alt="une map">
       </div>
 
-      <h1 style="margin-top: 50%;">Découvrez le projet<br>Loubardise & Surfrider</h1>
+      <h1 class='special'>Découvrez le projet<br>Loubardise & Surfrider</h1>
 
       <div class="step-2">
         <div class="info-popup-2">
@@ -25,7 +25,7 @@
           <p>pour nettoyer le monde du plastique</p>
         </div>
 
-        <div class="info-popup-2">
+        <div class="info-popup-2 after">
           <p class="max-size">🤖</p>
           <p>Consultez les déchets signalés,</p>
           <p>à travers le monde,</p>
@@ -91,7 +91,6 @@ h1{
   margin-bottom: 5%;
   margin-top: 5%;
   color: white;
-  font-size:5vw;
 }
 
 .title-mini{
@@ -106,34 +105,23 @@ h1{
 .step-2{
   margin-top: 10%;
   position: relative;
-  display: flex;
-  justify-content: space-around;
 }
 
 .info-popup{
   background: #1C1C1C;
   color: white;
-  padding: 3%;
-  width: 35%;
 }
 
 .info-popup-2{
   background: #1C1C1C;
   color: white;
-  padding: 3%;
-  width: 35%;
 }
 
 .max-size{
-  font-size: 4vw;
   font-weight: bold;
 }
 
 .img-map{
-  position: absolute;
-  top: 40%;
-  left: 45%;
-  width: 90%;
   border-radius: 5px;
 }
 
@@ -159,7 +147,6 @@ h1{
   background: #2F6C60;
   border:none;
   outline: none;
-  font-size: 1.5vw;
 }
 
 .button-pick:hover{
@@ -167,5 +154,124 @@ h1{
   opacity: 0.7;
   transition: 0.5s;
   transform: translateY(-3px);
+}
+
+/* desktop */
+@media (min-width: 1024px){
+  h1{
+    font-size:5vw;
+  }
+
+  .step-2{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .info-popup{
+    width: 35%;
+    padding: 3%;
+  }
+
+  .info-popup-2{
+    width: 35%;
+    padding: 3%;
+  }
+
+  .max-size{
+    font-size: 4vw;
+  }
+
+  .img-map{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    width: 90%;
+  }
+
+  .special{
+    margin-top: 50%;
+  }
+
+  .button-pick{
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .button-pick{
+    font-size: 3.5vw;
+  }
+
+  h1{
+    font-size:7vw;
+  }
+
+  .step-2{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .info-popup{
+    width: 50%;
+    padding: 5%;
+  }
+
+  .info-popup-2{
+    width: 45%;
+    padding: 3%;
+  }
+
+  .max-size{
+    font-size: 6vw;
+  }
+
+  .img-map{
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    width: 90%;
+  }
+
+  .special{
+    margin-top: 50%;
+  }
+}
+
+/* iphone */
+@media (max-width: 767px){
+  h1{
+    font-size:10vw;
+  }
+
+  .info-popup{
+    width: 100%;
+    padding: 10%;
+  }
+
+  .info-popup-2{
+    width: 100%;
+    padding: 10%;
+  }
+
+  .after{
+    margin-top: 5%;
+  }
+
+  .max-size{
+    font-size: 8vw;
+  }
+
+  .img-map{
+    margin-top: 5%;
+    width: 100%;
+  }
+
+  .special{
+    margin-top: 30%;
+  }
+
+  .button-pick{
+    font-size: 4.5vw;
+  }
 }
 </style>
