@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div class="general-popup" v-if="open" v-bind:style="'left: 1%; top: 10%;'">
+    <div class="general-popup" v-if="open">
       <button id="close" class="close" v-on:click="close">X</button>
       <div class="image" v-bind:style="'background-image:url(' + infoDechet.urlfile + ');'"></div>
 
@@ -66,14 +66,10 @@ export default {
   animation: left-to-right 0.5s ease-in reverse;
 }
 
-
 .general-popup{
   position: absolute;
   z-index:100;
-  border-radius: 5px;
-  width: 20vw;
   background: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .close{
@@ -89,6 +85,15 @@ export default {
   cursor: pointer;
 }
 
+p{
+  margin: 0
+}
+
+.sub-info{
+  padding: 6% 5%;
+  text-align: center;
+}
+
 .image{
   background-position: center;
   background-repeat: no-repeat;
@@ -99,25 +104,14 @@ export default {
   border-radius: 5px 5px 0 0;
 }
 
-p{
-  margin: 0
-}
-
-.sub-info{
-  padding: 6% 5%;
-  text-align: center;
-}
-
 .pd-number{
   font-weight: bold;
-  font-size: 2.25vw;
   color: #1C1C1C;
 }
 
 .button-pick{
   font-weight : normal;
   padding: 10px 50px;
-  font-size: 15px;
   border-radius: 5px;
   opacity: 1;
   transition: 0.5s;
@@ -136,14 +130,93 @@ p{
 }
 
 .description{
-  font-size:0.8vw;
   color: #D1D1D1;
   margin-bottom: 5%;
 }
 
 .information{
   color: #1C1C1C;
-  font-size:1vw;
+}
+
+/* desktop */
+@media (min-width: 1024px){
+  .general-popup{
+    border-radius: 5px;
+    width: 20vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 1%;
+    top: 10%;
+  }
+
+  .pd-number{
+    font-size: 2.25vw;
+  }
+
+  .button-pick{
+    font-size: 1.25vw;
+  }
+
+  .description{
+    font-size: 0.8vw;
+  }
+
+  .information{
+    font-size:1vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .general-popup{
+    width: 60vw;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    left: 1%;
+    top: 10%;
+  }
+
+  .pd-number{
+    font-size: 6vw;
+  }
+
+  .button-pick{
+    font-size: 3vw;
+  }
+
+  .description{
+    font-size: 1.5vw;
+  }
+
+  .information{
+    font-size:2.5vw;
+  }
+}
+
+/* iphone */
+@media (max-width: 767px){
+  .general-popup{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+  }
+
+  .pd-number{
+    font-size: 8vw;
+  }
+
+  .button-pick{
+    font-size: 5vw;
+  }
+
+  .description{
+    font-size: 3.5vw;
+  }
+
+  .information{
+    font-size:4.5vw;
+  }
 }
 
 </style>
