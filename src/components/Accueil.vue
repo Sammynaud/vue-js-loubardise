@@ -25,6 +25,9 @@
         :posx="posx"
         :posy="posy"
     />
+    <div class="ask" v-on:click="openAccueil">
+      <span>🦋</span>
+    </div>
   </div>
 </template>
 
@@ -68,6 +71,9 @@ export default {
     },
     close(){
       this.open = false
+    },
+    openAccueil(){
+      this.$emit('open-accueil')
     }
   },
   mounted() {
@@ -91,6 +97,24 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.ask{
+  position: fixed;
+  bottom: 5%;
+  left: 1%;
+  background:white;
+  border-radius: 100px;
+  font-size: 2vw;
+  padding: 10px;
+  transform: translateY(0);
+  transition: all 0.2s ease-in;
+}
+
+.ask:hover{
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  transform: translateY(-5px);
 }
 
 </style>
